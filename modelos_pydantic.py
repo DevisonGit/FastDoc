@@ -1,0 +1,21 @@
+from datetime import datetime
+
+from pydantic import BaseModel
+
+
+class User(BaseModel):
+    id: int
+    name: str = 'John Doe'
+    signup_ts: datetime | None = None
+    friends: list[int] = []
+
+
+external_data = {
+    'id': '123',
+    'signup': '2025-06-01 12:00',
+    'friends': [1, '2', b'3']
+}
+
+user = User(**external_data)
+print(user)
+print(user.id)
