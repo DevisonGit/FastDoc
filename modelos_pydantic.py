@@ -12,7 +12,7 @@ class User(BaseModel):
 
 external_data = {
     'id': '123',
-    'signup': '2025-06-01 12:00',
+    'signup_ts': '2025-06-01 12:00',
     'friends': [1, '2', b'3']
 }
 
