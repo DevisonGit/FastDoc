@@ -1,8 +1,8 @@
 from fastapi import APIRouter
 
-from corpo_requisicao.item import Item
+from models.item import Item
 
-router = APIRouter(prefix='/items')
+router = APIRouter(prefix='/items', tags=['corpo requisicao'])
 
 
 # corpo da requisição
