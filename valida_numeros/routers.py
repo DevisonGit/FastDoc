@@ -55,3 +55,67 @@ async def read_items(
     if q:
         results.update({'q': q})
     return results
+
+
+@router.get('/items/{items_id}/kwargs/annotated')
+async def read_items(
+        item_id: Annotated[int, Path(title='The ID of the item to get')], q: str
+):
+    results = {'item_id': item_id}
+    if q:
+        results.update({'q': q})
+    return results
+
+
+@router.get('/items/{item_id}/maior')
+async def read_items(
+        *, item_id: int = Path(ge=1), q: str
+):
+    results = {'item_id': item_id}
+    if q:
+        results.update({'q': q})
+    return results
+
+
+@router.get('/items/{item_id}/maior/annotated')
+async def read_items(
+        item_id: Annotated[int, Path(ge=1)], q: str
+):
+    results = {'item_id': item_id}
+    if q:
+        results.update({'q': q})
+    return results
+
+
+@router.get('/item/{item_id}/maior/menor')
+async def read_items(
+        *, item_id: int = Path(gt=0, le=1000), q: str
+):
+    results = {'item_id': item_id}
+    if q:
+        results.update({'q': q})
+    return results
+
+
+@router.get('/item/{item_id}/maior/menor')
+async def read_items(
+        item_id: Annotated[int, Path(gt=0, le=1000)], q: str
+):
+    results = {'item_id': item_id}
+    if q:
+        results.update({'q': q})
+    return results
+
+
+@router.get('/item/{item_id}/float')
+async def read_items(
+        item_id: Annotated[int, Path(gt=0, le=1000)],
+        q: str,
+        size: Annotated[float, Query(gt=0, lt=10.5)]
+):
+    results = {'item_id': item_id}
+    if q:
+        results.update({'q': q})
+    if size:
+        results.update({'size': size})
+    return results
