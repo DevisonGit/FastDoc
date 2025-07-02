@@ -97,9 +97,9 @@ async def read_items(
     return results
 
 
-@router.get('/item/{item_id}/maior/menor')
+@router.get('/item/{item_id}/maior/menor/annotated')
 async def read_items(
-        item_id: Annotated[int, Path(gt=0, le=1000)], q: str
+        *, item_id: Annotated[int, Path(gt=0, le=1000)], q: str
 ):
     results = {'item_id': item_id}
     if q:
